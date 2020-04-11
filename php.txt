@@ -1,0 +1,29 @@
+// NOTAS:
+// Chama um ficheiro
+// include() -> Se houver algum problema, dá erro mas passa à frente
+// require() -> Se houver algum problema, interrompe tudo
+
+// Vai buscar o conteúdo de um website específico
+file_get_contents(https://www.youtube.com/);
+
+
+
+// Arrays
+// Mostra o conteúdo do array
+print_r($array);
+
+// Tamanho do array
+sizeof($array);
+
+// Remove um valor do array, de acordo com a key
+// Isto não vai mudar o valor das keys (reordenar, etc)
+unset($array['Pedro']);
+
+// Verifica se um array tem uma key com um nome específico
+array_key_exists('name', $array)
+
+
+
+// GET Variables
+// Mostra todas as variáveis (e seus valores) que estão no GET request (no url)
+print_r($_GET);
