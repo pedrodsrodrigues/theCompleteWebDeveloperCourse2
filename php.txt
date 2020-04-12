@@ -7,7 +7,7 @@
 file_get_contents(https://www.youtube.com/);
 
 // Substitui um carater (ou grupo de carateres) específico por outro carater (ou grupo de carateres) específico
-$word = str_replace(' ', '-', word);                    // Substitui todos os espaços (" ") por hífens ("-")
+$word = str_replace(' ', '-', $name);                       // Substitui todos os espaços (" ") por hífens ("-")
 
 // Ver o "response header"
 print_r(get_headers('https://duckduckgo.com'));
@@ -33,3 +33,25 @@ array_key_exists('name', $array)
 // GET Variables
 // Mostra todas as variáveis (e seus valores) que estão no GET request (no url)
 print_r($_GET);
+
+
+
+// SQL/Database
+// Faz ligação ("3307" é necessário pois a porta que quero não é a default)
+$connection = mysqli_connect('localhost', 'root', '', 'thecompletewebdevelopercourse', '3307');
+
+// Verifica se ocorreu algum problema na ligação
+mysqli_connect_error();
+
+// Corre uma query
+mysqli_query($connection, $query);
+
+// Usar SEMPRE quando se chama uma variável a meio de uma query (serve para palavras com apóstrofos/aspas não estragarem a query)
+//Exemplo abaixo:
+// $name = 'Connor O\'Brien';
+// $query = 'SELECT * FROM users WHERE name = \'' . mysqli_real_escape_string($connection, $name) . '\'';
+mysqli_real_escape_string($connection, $name);
+
+// Retorna o número de rows que vem na resposta
+$result = mysqli_query($connection, $query);
+mysqli_num_rows($result);
