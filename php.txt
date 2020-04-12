@@ -6,6 +6,12 @@
 // Vai buscar o conteúdo de um website específico
 file_get_contents(https://www.youtube.com/);
 
+// Substitui um carater (ou grupo de carateres) específico por outro carater (ou grupo de carateres) específico
+$word = str_replace(' ', '-', word);                    // Substitui todos os espaços (" ") por hífens ("-")
+
+// Ver o "response header"
+print_r(get_headers('https://duckduckgo.com'));
+
 
 
 // Arrays
