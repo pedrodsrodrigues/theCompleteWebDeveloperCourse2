@@ -12,6 +12,9 @@ $word = str_replace(' ', '-', $name);                       // Substitui todos o
 // Ver o "response header"
 print_r(get_headers('https://duckduckgo.com'));
 
+// "session_start()" tem de estar em todos os ficheiros se não a sessão pode ser perdida
+// Evitar colocar HTML antes de começar a sessão, pois isso também pode quebrar a sessão
+
 
 
 // Arrays
@@ -55,3 +58,26 @@ mysqli_real_escape_string($connection, $name);
 // Retorna o número de rows que vem na resposta
 $result = mysqli_query($connection, $query);
 mysqli_num_rows($result);
+
+
+
+// Sessions
+// Começar a sessão
+session_start();
+
+// Cria uma variável de sessão
+$_SESSION['name'] = 'value';
+
+
+
+// Cookies
+// Cria um cookie
+// No caso abaixo vai ser durar 1 dia ("* 24")
+setcookie('name', 'value', time() + 60 * 60 * 24);
+
+// Remove um cookie [colocando uma "expiration date" passada (neste caso é 1h atrás ("* 60"))]
+setcookie('name', 'value', time() - 60 * 60);
+
+// Atualiza o valor de um cookie
+// No exemplo abaixo o cookie "username" vai começar a ter o valor "54321"
+$_COOKIE['username'] = '54321';
