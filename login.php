@@ -19,10 +19,7 @@ if ($_POST) {
         }
 
         if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)) {
-            $loginQuery = 'SELECT * FROM users WHERE username = \'' . $_POST['username'] . '\' AND password = \'' . $_POST['password'] . '\'';
-            echo $loginQuery;
-
-            echo '<br><br>';
+            $loginQuery = 'SELECT * FROM users WHERE username = \''.$_POST['username'].'\' AND password = \''.md5(md5(mysqli_insert_id($connection)).$_POST['password']).'\'';
 
             // Runs the query, saving it in a variable ($result)
             if ($result = mysqli_query($connection, $loginQuery)) {
@@ -57,7 +54,7 @@ if ($_POST) {
     <input type='text' id='username' name='username' required>
 
     <p>Password:</p>
-    <input type='text' id='password' name='password' required>
+    <input type='password' id='password' name='password' required>
 
     <br><br>
 

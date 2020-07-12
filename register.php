@@ -20,7 +20,7 @@ if ($_POST) {
             if (mysqli_num_rows($result)) {
                 echo 'That username already exists!';
             } else {
-                $registerQuery = 'INSERT INTO users (name, username, password) values (\'' . mysqli_real_escape_string($connection, $_POST['name']) . '\',\'' . mysqli_real_escape_string($connection, $_POST['username']) . '\',\'' . mysqli_real_escape_string($connection, $_POST['password']) . '\')';
+                $registerQuery = 'INSERT INTO users (name, username, password) values (\'' . mysqli_real_escape_string($connection, $_POST['name']) . '\',\'' . mysqli_real_escape_string($connection, $_POST['username']) . '\',\'' . mysqli_real_escape_string($connection, md5(md5(mysqli_insert_id($connection)) . $_POST['password'])) . '\')';
                 echo $registerQuery;
 
                 echo '<br><br>';
@@ -47,7 +47,7 @@ if ($_POST) {
     <input type='text' id='username' name='username' required>
 
     <p>Password:</p>
-    <input type='text' id='password' name='password' required>
+    <input type='password' id='password' name='password' required>
 
     <br><br>
 
